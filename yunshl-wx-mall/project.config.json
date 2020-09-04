@@ -27,7 +27,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.7.0",
 	"appid": "<%= appid%>",
-	"projectname": "<%= filename%>",
+	"projectname": "<%= companyName%>",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
