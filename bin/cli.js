@@ -171,6 +171,7 @@ if (process.argv.length > 2 && process.argv[2] === '--yes') {
 }
 
 function handleData(data) {
+    console.log(data)
     // 获取命令行结果
     let {
         companyId,

@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/frame/index",
+    "pages/wxpay/index",
+    "pages/bitMapIframe/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "10",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap6.json"
+}
