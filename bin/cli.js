@@ -152,7 +152,7 @@ if (process.argv.length > 2 && process.argv[2] === '--yes') {
         {
             type: 'confirm',
             name: 'isPathname',
-            message: '是否填写域名,如果不填写，则默认域名为 ysdinghuo.com',
+            message: '是否填写域名,如果不填写，则默认域名为 https://m.ysdinghuo.com',
             default: false,
         },
         {
@@ -171,13 +171,12 @@ if (process.argv.length > 2 && process.argv[2] === '--yes') {
 }
 
 function handleData(data) {
-    console.log(data)
     // 获取命令行结果
     let {
         companyId,
         appid,
         secret,
-        pathname = 'ysdinghuo.com',
+        pathname = 'https://m.ysdinghuo.com',
         companyName,
         projectPath,
         projectName,
@@ -188,6 +187,12 @@ function handleData(data) {
     projectName = projectName || 'yunshl-wx-mall';
     outputProjectPath = outputProjectPath || process.cwd();
     outputProjectName = outputProjectName || `yunshl-wx-mall-${companyId}`;
+    const pointPathname = pathname.replace('//am.', '//point.')
+        .replace('//bm.', '//point.')
+        .replace('//m.', '//point.');
+    const apiPathname = pathname.replace('//am.', '//api.')
+        .replace('//bm.', '//api.')
+        .replace('//m.', '//api.');
 
     if (!companyId || !appid || !secret) {
         console.log('企业id、appid、secret 不能为空！');
@@ -240,7 +245,7 @@ function handleData(data) {
     try {
         const files = fs.readdirSync(templateFiles);
         files.forEach(file => {
-            ejs.renderFile(path.join(templateFiles, file), {companyId, appid, secret, pathname, companyName}, (err, result) => {
+            ejs.renderFile(path.join(templateFiles, file), {companyId, appid, secret, pathname, companyName, pointPathname, apiPathname}, (err, result) => {
                 if (err) throw err;
                 try {
                     fs.writeFileSync(path.join(__dirname, './../dist', file), result);
